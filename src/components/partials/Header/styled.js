@@ -45,7 +45,11 @@ export const HeaderArea = styled.div`
         li {
             margin: 0 20px;
             
-            a {
+            a ,button{
+                outline: none;
+                cursor: pointer;
+                border: 0;
+                background: none;
                 color: black;
                 font-size: 14px;
                 text-decoration: none;
