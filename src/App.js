@@ -11,9 +11,11 @@ const Page = (props) => {
   return (
     <BrowserRouter>
       <Template>
+    
         <Header/>
         <Routes/>
         <Footer/>
+    
       </Template>
     </BrowserRouter>
   );
