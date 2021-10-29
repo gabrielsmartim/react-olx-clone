@@ -6,11 +6,12 @@ import { useLocation, useHistory } from "react-router-dom";
 import AdItem from "../../components/partials/AdItem";
 import { set } from "js-cookie";
 
-
+let timer;
 
 const Page = () => {
     const api = useApi();
     const history = useHistory();
+    
 
     const useQueryString = () => {
         return new URLSearchParams(useLocation().search);
@@ -26,6 +27,24 @@ const Page = () => {
     const [categories, setCategories] = useState([]);
     const [adList, setAdList ] = useState([]);
 
+    const [resultOpacity, setResultOpacity] = useState(1);
+    const [warningMessage, setWarningMessage] = useState('Nenhum resultado encontrado');
+    const [loading, setLoading] = useState(true);
+
+    const getAdsList = async () => {
+        setLoading(true);
+        const json = await api.getAds({
+            sort:'desc',
+            limit:9,
+            q,
+            cat,
+            state
+        });
+        setAdList(json.ads);
+        setResultOpacity(1);
+        setLoading(false);
+    }
+
     useEffect(()=> {
         let queryString = [];
         if(q) {
@@ -38,12 +57,19 @@ const Page = () => {
             queryString.push(`state=${state}`);
         }
 
-
-
         history.replace({
             search:`?${queryString.join('&')}`
         });
+
+        if(timer) {
+            clearTimeout(timer)
+        }
+
+        timer = setTimeout(getAdsList, 1000);
+        setResultOpacity(0.3)
+
     }, [q, cat, state]);
+
 
     useEffect(()=> {
         const getStates = async()=> {
@@ -60,16 +86,6 @@ const Page = () => {
         getCategories();
     }, []);
 
-    useEffect(()=> {
-        const getRecentAds = async () => {
-            const json = await api.getAds({
-                sort:'desc',
-                limit:8
-            });
-            setAdList(json.ads);
-        }
-        getRecentAds();
-    }, []);
 
 
     return (
@@ -115,7 +131,22 @@ const Page = () => {
 
             </div>
             <div className="rightSide">
-                xxx
+                <h2>Resultados</h2>
+
+                {loading && 
+                    <div className="listWarning">Carregando...</div>
+                }
+                {!loading && adList.length == 0 &&
+                    <div className="listWarning">Não foram encontrados resultados para sua pesquisa.</div>
+                }
+                
+
+
+                <div className="list" style={{opacity:resultOpacity}}>
+                    {adList.map((i,k)=>
+                        <AdItem key={k} data={i}/>
+                    )}
+                </div>
             </div>
 
 

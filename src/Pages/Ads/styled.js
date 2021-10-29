@@ -53,18 +53,30 @@ export const PageArea = styled.div `
             color: white;
         }
 
-        
-
-
-
 
     }
     .rightSide {
         flex: 1;
+        
+        h2 {
+            margin: 0 0 0 10px;
+            font-size: 18px;
+        }
+
+        .listWarning {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .aditem {
+            width: 33%;
+        }
+
     }
-
-
-
-
 `;
 
