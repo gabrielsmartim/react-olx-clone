@@ -1,11 +1,11 @@
 # Clone OLX B7web/Gabriel de S. Martim 
 
-- Desenvolvido puramente em ReactJS 
+- ReactJS 
 
-## -- Repositorio / ferramentas úteis --
+##  Repositorio / ferramentas úteis 
 
--- Requisições
--- Testes
--- Consumo API WS
--- Como utilizar ROUTER / REDUX
--- Estrutura / Criação API Local
+- Requisições
+- Testes
+- Consumo API WS
+- Como utilizar ROUTER / REDUX
+- Estrutura / Criação API Local
