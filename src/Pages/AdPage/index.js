@@ -129,11 +129,7 @@ return (
                 </>
             }  
             </OthersArea>
-
-        
     </PageContainer>
-
-    
 );
 }   
 
