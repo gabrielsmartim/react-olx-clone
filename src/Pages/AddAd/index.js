@@ -69,9 +69,6 @@ const Page = () => {
                 setError(json.error);
             }
 
-
-
-
         } else {
             setError(errors.join("\n"));
         }
@@ -170,8 +167,6 @@ return (
             </form>
         </PageArea>
     </PageContainer>
-
-    
 );
 }   
 
