@@ -77,6 +77,76 @@ export const PageArea = styled.div `
             width: 33%;
         }
 
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            
+                .pagItem {
+                width: 30px;
+                height:30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                margin-right: 5px;
+                cursor: pointer;
+                
+                    &:hover {
+                        border-bottom: 1px solid black;
+                    }
+
+                    &.active {
+                        color: blue;
+                        border-bottom:1px solid blue;
+                    }
+            }
+        }
+
     }
+
+@media (max-width:600px) {
+    & {
+        flex-direction: column;
+    }
+
+    .leftSide {
+        width: auto;
+
+        form {
+            margin: 10px;
+        }
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+
+            li {
+                width: 50%;
+            }
+        }
+    }
+
+    .rightSide {
+        margin: 10px;
+
+        .list .aditem {
+            width: 50%;
+        }
+
+        .pagination {
+            display: flex;
+            flex-wrap: wrap;
+            width: 360px;
+
+        }
+
+    }
+
+
+    
+}
+
 `;
 
